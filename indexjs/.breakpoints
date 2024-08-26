@@ -1,0 +1,20 @@
+{
+  "files": {
+    "images/popup.html": [
+      {
+        "id": "6db94924-6f00-4fa2-98d8-f456cc364b19",
+        "line": 8,
+        "version": 11,
+        "index": 212
+      }
+    ],
+    "index.js": [
+      {
+        "id": "bc3a8ff0-c242-4e64-8eed-249a5edae4c2",
+        "line": 1,
+        "version": 143,
+        "index": 0
+      }
+    ]
+  }
+}

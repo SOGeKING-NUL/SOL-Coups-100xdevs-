@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "SOL Coups",
+  "version": "0.0.1", 
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": {
+      "128": "images/icon128.png"
+    }
+  },
+  "icons": {
+    "128": "images/icon128.png"
+  },
+  "content_scripts": [
+    {
+    "matches" : ["http://*/*", "https://*/*"],
+    "css": ["index.css"],
+    "js" : ["index.js"]
+    }
+  ]
+}

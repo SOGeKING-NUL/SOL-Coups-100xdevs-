@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SOL Coups</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <!-- wallet 1  -->
+  <div class="container page-1" >
+    <div class="header">
+      <img src="images\icon128.png" alt="Logo">
+      <h1>SOL Coups</h1>
+    </div>
+    <div class="navbar">
+      <div class="email-display">
+        <div class="final-email-holder">
+          <input type="email" id="email" placeholder="Enter your email" />
+          <button class="save-button">Save</button>
+        </div>
+        <div class="inital-email-holder" style="display: none;">
+          <div>
+            <input id="displayEmail" placeholder="Receiving mail here" readonly />
+          </div>
+          <div>
+            <button class="edit-button">Edit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="input-group">
+      <label for="voucherAmount">Amount</label>
+      <input type="number" id="voucherAmount" placeholder="Enter Voucher Amount">
+    </div>
+
+    <div class="button">
+      <button onclick="checkPrize()">Check Prize</button>
+    </div>
+
+    <div class="output" id="output">
+      <label for="solAmount"></label>
+    </div>
+  
+    <div class="button">
+      <button onclick="goToPage2()">Next</button>
+    </div>
+  </div>
+  
+
+  <!-- page 2  -->
+  <div class="container page-2" style="display:none;">
+    <div class="header">
+      <h1>Make Payment Here</h1>
+      <span class="back-button" onclick="goBack()">Back</span>
+    </div>
+
+    <div class="input-group">
+      <label for="displayEmail">Email</label>
+      <input type="text" id="displayEmailPage2" readonly />
+    </div>
+
+    <div class="input-group">
+      <label for="paymentAmount">INR Amount</label>
+      <div style="display: flex;">
+        <span style="font-weight: bold;">₹</span>
+        <input type="text" id="paymentAmountPage2" readonly style="flex: 1; text-align: left;" />
+      </div>
+    </div>
+
+    <div class="input-group">
+      <label for="solAmountPage2">Estimated Solana (SOL)</label>
+      <input type="text" id="solAmountPage2" readonly />
+    </div>
+
+    <div class="input-group">
+      <label for="senderWallet">Sender's Wallet Address</label>
+      <div style="display: flex; align-items: center;">
+        <input type="text" id="senderWallet" placeholder="Enter wallet address" />
+        <button onclick="validateWalletAddress()">Check</button>
+      </div>
+      <div id="validationResult"></div>
+    </div>
+  
+
+    <div class="button">
+      <button onclick="continuePayment()">Continue</button>
+    </div>
+  </div>
+  <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
+  <script src="index.js"></script>
+</body>
+</html>

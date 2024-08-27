@@ -1,0 +1,220 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0; /* Light gray background */
+}
+
+.container {
+  background-color: #ffffff; /* White background for the container */
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 400px; /* Fixed width to match your original dimensions */
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header img {
+  width: 120px;
+  height: 120px;
+  
+}
+
+/* .header h1 {
+  font-size: 1.2rem;
+  margin: 0;
+} */
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+.input-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.button button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.output {
+  margin-top: 20px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.email-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.final-email-holder {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.inital-email-holder {
+  display: none; /* This is hidden by default */
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+input[type="email"] {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  width: calc(100% - 90px);
+  font-size: 1rem;
+}
+
+input[type="text"] {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  width: calc(100% - 10px);
+  font-size: 1rem;
+}
+
+.save-button,
+.edit-button {
+  padding: 8px 16px;
+  border-radius: 5px;
+  border: none;
+  background-color: #28a745;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.edit-button {
+  background-color: #ffc107;
+}
+
+.back-button {
+  cursor: pointer;
+  color: #007bff;
+}
+
+.page-1,
+.page-2 {
+  display: none;
+}
+
+.page-1 {
+  display: flex;
+  flex-direction: column;
+}
+
+.page-2 {
+  display: flex;
+  flex-direction: column;
+}
+
+#displayEmailPage2 {
+  background-color: #e9ecef;
+  border: 1px solid #ced4da;
+  padding-left: 10px;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+#paymentAmountPage2 {
+  background-color: #e9ecef;
+  border: 1px solid #ced4da;
+  font-weight: bold;
+  font-size: 1rem;
+  text-align: left;
+  padding-left: 10px;
+}
+
+#solAmountPage2 {
+  background-color: #e9ecef;
+  border: 1px solid #ced4da;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+#senderWallet {
+  font-size: 1rem;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  width: calc(100% - 60px);
+}
+
+#senderWallet + button {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+#validationResult {
+    font-size: 0.9rem;
+    margin-top: 5px;
+    font-weight: bold;
+  }
+  .valid-address {
+    color: green;
+  }
+  .invalid-address {
+    color: red;
+  }

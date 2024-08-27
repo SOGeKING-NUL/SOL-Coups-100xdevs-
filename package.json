@@ -1,5 +1,5 @@
 {
-  "name": "solana_devx100",
+  "name": "nodejs",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,6 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@solana/web3.js": "^1.95.3"
+    "@types/node": "^18.0.6"
   }
 }

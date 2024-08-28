@@ -6,7 +6,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f0f0f0; /* Light gray background */
+  background-color: #2d2d2d; /* Light gray background */
 }
 
 .container {
@@ -29,13 +29,7 @@ body {
 .header img {
   width: 120px;
   height: 120px;
-  
 }
-
-/* .header h1 {
-  font-size: 1.2rem;
-  margin: 0;
-} */
 
 .input-group {
   margin-bottom: 15px;
@@ -150,8 +144,13 @@ input[type="text"] {
   color: #007bff;
 }
 
-.page-1,
-.page-2 {
+.error-message {
+  color: red;
+  text-align: center;
+  margin-top: 10px; /* Hidden by default */
+}
+
+.page-1, .page-2, .page-3 {
   display: none;
 }
 
@@ -165,12 +164,25 @@ input[type="text"] {
   flex-direction: column;
 }
 
+.page-3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
 #displayEmailPage2 {
   background-color: #e9ecef;
   border: 1px solid #ced4da;
   padding-left: 10px;
   font-weight: bold;
   font-size: 1rem;
+}
+
+.errorEmail {
+  color: red;
+  text-align: center;
+  margin-top: 3px; /* Hidden by default */
 }
 
 #paymentAmountPage2 {
@@ -208,13 +220,93 @@ input[type="text"] {
 }
 
 #validationResult {
-    font-size: 0.9rem;
-    margin-top: 5px;
-    font-weight: bold;
-  }
-  .valid-address {
-    color: green;
-  }
-  .invalid-address {
-    color: red;
-  }
+  font-size: 0.9rem;
+  margin-top: 5px;
+  font-weight: bold;
+}
+
+.valid-address {
+  color: green;
+}
+
+.invalid-address {
+  color: red;
+}
+
+.highlighted-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: skyblue;
+}
+
+.qr-code {
+  margin-top: 20px;
+  border: 1px solid #ccc;
+  padding: 20px;
+  background-color: #f9f9f9;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.timer {
+  font-size: 2rem;
+  color: #ffc107;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* New Styles */
+#walletAddress {
+  width: calc(100% - 120px); /* Adjusted for the width of the button */
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  margin-right: 5px;
+}
+
+/* .page-3 .input-group {
+  width: 100%;
+} */
+.page-3 .input-group {
+display: flex;
+align-items: center;
+margin-top: 20px;
+}
+
+.page-3 .input-group input {
+flex: 1;
+padding: 8px;
+border-radius: 5px;
+border: 1px solid #ddd;
+font-size: 1rem;
+}
+
+.page-3 .input-group button {
+margin-left: 10px;
+padding: 8px 16px;
+border: none;
+background-color: #007bff;
+color: white;
+border-radius: 5px;
+cursor: pointer;
+font-size: 1rem;
+}
+
+.page-3 button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-left: 5px;
+}
+
+.page-3 button.copied {
+  background-color: #28a745;
+}

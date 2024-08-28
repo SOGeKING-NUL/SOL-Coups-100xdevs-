@@ -8,7 +8,7 @@ const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 async function getTransactions(senderAddress, expectedAmount) {
     const senderPubKey = new solanaWeb3.PublicKey(senderAddress);
-    const receiverAddress = 'Fseqb4QxdhFsqBT9G4k5tQiTr5rp9yFtooaXy4wbXLDZ';
+    const receiverAddress = 'E1GvucNq72EiVPZoytdukF7F7Cg8RYk678Cp8mYJHg8F';
 
     let transactionList = await solanaConnection.getSignaturesForAddress(senderPubKey, { limit: 5 });
 
@@ -79,11 +79,11 @@ function startPeriodCheck(senderAddress, expectedAmount, interval = 10000) {
             clearInterval(periodicCheck);
             console.log('Payment failed');
             resolve('Payment failed');
-        }, 60000); // 1 minutes in milliseconds
+        }, 300000); // 5 minutes in milliseconds
     });
 }
 
-// startPeriodCheck('E1GvucNq72EiVPZoytdukF7F7Cg8RYk678Cp8mYJHg8F', 40);
+//startPeriodCheck('Fseqb4QxdhFsqBT9G4k5tQiTr5rp9yFtooaXy4wbXLDZ', 40);
 
 // Export the function for use
 module.exports = { startPeriodCheck };

@@ -2,320 +2,466 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/ico" href="images/icon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
     <title>SOL Coups</title>
-  </head>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #2d2d2d;
+      }
 
+      .container {
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 400px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .header {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .header img {
+        width: 120px;
+        height: 120px;
+      }
+
+      .input-group {
+        margin-bottom: 15px;
+      }
+
+      .input-group label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+
+      .input-group input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 1rem;
+      }
+
+      .button {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+      }
+
+      .button button {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+
+      .output {
+        margin-top: 20px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #007bff;
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+      }
+
+      .email-display {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+      }
+
+      .final-email-holder {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+      }
+
+      .inital-email-holder {
+        display: none;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+      }
+
+      input[type="email"] {
+        padding: 8px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        margin-bottom: 10px;
+        width: calc(100% - 90px);
+        font-size: 1rem;
+      }
+
+      input[type="text"] {
+        padding: 8px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        margin-bottom: 10px;
+        width: calc(100% - 10px);
+        font-size: 1rem;
+      }
+
+      .save-button,
+      .edit-button {
+        padding: 8px 16px;
+        border-radius: 5px;
+        border: none;
+        background-color: #28a745;
+        color: white;
+        font-size: 1rem;
+        cursor: pointer;
+        margin-top: 5px;
+      }
+
+      .edit-button {
+        background-color: #ffc107;
+      }
+
+      .back-button {
+        cursor: pointer;
+        color: #007bff;
+      }
+
+      .error-message {
+        color: red;
+        text-align: center;
+        margin-top: 10px;
+      }
+
+      .page-1,
+      .page-2,
+      .page-3 {
+        display: none;
+      }
+
+      .page-1 {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .page-2 {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .page-3 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      #displayEmailPage2 {
+        background-color: #e9ecef;
+        border: 1px solid #ced4da;
+        padding-left: 10px;
+        font-weight: bold;
+        font-size: 1rem;
+      }
+
+      .errorEmail {
+        color: red;
+        text-align: center;
+        margin-top: 3px;
+      }
+
+      #paymentAmountPage2 {
+        background-color: #e9ecef;
+        border: 1px solid #ced4da;
+        font-weight: bold;
+        font-size: 1rem;
+        text-align: left;
+        padding-left: 10px;
+      }
+
+      #solAmountPage2 {
+        background-color: #e9ecef;
+        border: 1px solid #ced4da;
+        font-weight: bold;
+        font-size: 1rem;
+      }
+
+      #senderWallet {
+        font-size: 1rem;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        width: calc(100% - 60px);
+      }
+
+      #senderWallet + button {
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+
+      #validationResult {
+        font-size: 0.9rem;
+        margin-top: 5px;
+        font-weight: bold;
+      }
+
+      .valid-address {
+        color: green;
+      }
+
+      .invalid-address {
+        color: red;
+      }
+
+      .highlighted-text {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: skyblue;
+      }
+
+      .qr-code {
+        margin-top: 20px;
+        border: 1px solid #ccc;
+        padding: 20px;
+        background-color: #f9f9f9;
+        width: 200px;
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .timer {
+        font-size: 2rem;
+        color: #ffc107;
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      #walletAddress {
+        width: calc(100% - 120px);
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 1rem;
+        margin-right: 5px;
+      }
+
+      .page-3 .input-group {
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+      }
+
+      .page-3 .input-group input {
+        flex: 1;
+        padding: 8px;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        font-size: 1rem;
+      }
+
+      .page-3 .input-group button {
+        margin-left: 10px;
+        padding: 8px 16px;
+        border: none;
+        background-color: #007bff;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+
+      .page-3 button {
+        background-color: #007bff;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+        margin-left: 5px;
+      }
+
+      .page-3 button.copied {
+        background-color: #28a745;
+      }
+    </style>
+  </head>
   <body>
     <!-- wallet 1  -->
-    <div
-      class="flex iems-center justify-center p-20 h-[100vh] w-full text-slate-300"
-    >
-      <div class="flex justify-center items-center flex-col">
-        <div
-          class="flex border h-[90vh] w-[80vh] border-black bg-[#232223] justify-center items-center"
-        >
-          <div class="page-1 flex flex-col items-center justify-center">
-            <div class="flex flex-row justify-center items-center p-4 mb-5">
-              <img src="images\logo.png" alt="Logo" />
-              <h1 class="mt-10 text-center mb-10 font-semibold text-5xl ml-10">
-                SOL COUPS
-              </h1>
-            </div>
-            <h2 class="text-center font-bold font-serif text-2xl mb-5">
-              Enter Your Email
-            </h2>
-            <div
-              class="final-email-holder flex items-center justify-center mb-8"
-            >
-              <input
-                type="email"
-                id="email"
-                placeholder="Enter your email"
-                class="placeholder:font-semibold rounded-l-lg placeholder:text-slate-500 bg-[#181818] outline-none p-3 w-2/3"
-                style="width: 380px"
-              />
-              <button
-                class="save-button bg-[#96f76f] p-3 text-[#232223] font-serif rounded-r-lg"
-              >
-                Save
-              </button>
-            </div>
-            <div
-              class="inital-email-holder flex items-center justify-center mb-8"
-              style="display: none"
-            >
+    <div class="container page-1">
+      <div class="header">
+        <img src="images\icon128.png" alt="Logo" />
+        <h1>SOL Coups</h1>
+      </div>
+      <div class="navbar">
+        <div class="email-display">
+          <div class="final-email-holder">
+            <input type="email" id="email" placeholder="Enter your email" />
+            <button class="save-button">Save</button>
+          </div>
+          <div class="inital-email-holder" style="display: none">
+            <div>
               <input
                 id="displayEmail"
                 placeholder="Receiving mail here"
-                class="bg-[#181818] outline-none p-3 rounded-l-lg placeholder:font-semibold placeholder:text-slate-500"
                 style="width: 290px"
                 readonly
               />
-              <button
-                class="edit-button bg-[#96f76f] font-serif rounded-r-lg text-[#232223] p-3 text-black"
-              >
-                Edit
-              </button>
             </div>
-
-            <div
-              class="errorEmail text-2xl text-center mb-5 -mt-6 text-red-500 font-serif"
-              id="errorEmail"
-            ></div>
-            <h2
-              for="voucherAmount"
-              class="text-center font-bold font-serif text-2xl mb-5"
-            >
-              Amount
-            </h2>
-            <div class="input-group flex items-center justify-center flex-wrap">
-              <input
-                type="number"
-                id="voucherAmount"
-                placeholder="Enter Voucher Amount"
-                class="placeholder:font-semibold rounded-l-lg placeholder:text-slate-500 bg-[#181818] outline-none p-3"
-                style="width: 240px"
-              />
-              <div class="button">
-                <button
-                  onclick="checkPrize()"
-                  class="bg-[#96f76f] p-3 text-[#232223] rounded-r-lg font-serif"
-                >
-                  Check Prize
-                </button>
-              </div>
+            <div>
+              <button class="edit-button">Edit</button>
             </div>
-            <div
-              class="output mt-10 text-center font-bold font-serif text-2xl mb-4"
-              id="output"
-            >
-              <label for="solAmount"></label>
-            </div>
-
-            <div
-              class="button border w-1/5 flex items-center justify-center rounded-full bg-[#96f76f] text-[#232223] font-serif"
-            >
-              <button
-                onclick="goToPage2()"
-                class="p-2 font-serif text-md font-semibold"
-              >
-                Next
-              </button>
-            </div>
-            <div
-              id="errorMessage"
-              class="error-message text-2xl text-center mb-5 text-red-500 font-serif"
-            ></div>
           </div>
         </div>
+        <div class="errorEmail" id="errorEmail"></div>
       </div>
+
+      <div class="input-group">
+        <label for="voucherAmount">Amount</label>
+        <input
+          type="number"
+          id="voucherAmount"
+          placeholder="Enter Voucher Amount"
+          style="width: 380px"
+        />
+      </div>
+
+      <div class="button">
+        <button onclick="checkPrize()">Check Prize</button>
+      </div>
+
+      <div class="output" id="output">
+        <label for="solAmount"></label>
+      </div>
+
+      <div class="button">
+        <button onclick="goToPage2()">Next</button>
+      </div>
+      <div id="errorMessage" class="error-message"></div>
     </div>
 
     <!-- page 2  -->
-    <div
-      class="page-2 flex iems-center justify-center flex-col"
-      style="display: none"
-    >
-      <div class="flex iems-center justify-center text-slate-300">
-        <div class="flex justify-center items-center flex-col">
-          <div
-            class="flex border h-[80vh] w-[80vh] border-black bg-[#232223] -mt-[50rem] justify-center items-center"
-          >
-            <div class="flex items-center justify-center flex-col">
-              <i
-                class="back-button fa-solid fa-arrow-left -ml-[35rem] mt-6 fa-xl cursor-pointer"
-                onclick="goBack()"
-              ></i>
-              <div
-                class="flex items-center justify-center text-5xl font-bold font-serif"
-              >
-                <h1 class="mb-8">Make Payment Here</h1>
-              </div>
+    <div class="container page-2" style="display: none">
+      <div class="header">
+        <h1>Make Payment Here</h1>
+        <span class="back-button" onclick="goBack()">Back</span>
+      </div>
 
-              <div class="input-group flex flex-col mb-5">
-                <label
-                  for="displayEmail"
-                  class="text-center text-3xl font-bold font-serif text-2xl mb-2"
-                  >Email</label
-                >
-                <input
-                  type="text"
-                  class="placeholder:font-semibold placeholder:text-slate-500 text-slate-500 text-center rounded-full bg-[#181818] outline-none p-2 w-2/3"
-                  style="width: 380px"
-                  id="displayEmailPage2"
-                  readonly
-                />
-              </div>
+      <div class="input-group">
+        <label for="displayEmail">Email</label>
+        <input type="text" id="displayEmailPage2" readonly />
+      </div>
 
-              <div class="input-group flex flex-col mb-5">
-                <label
-                  for="paymentAmount"
-                  class="text-center text-3xl font-semibold font-serif text-2xl mb-2"
-                  >INR Amount</label
-                >
-                <div
-                  class="flex bg-[#181818] rounded-full items-center justify-center"
-                >
-                  <h2 class="text-2xl text-center font-bold">₹</h2>
-                  <input
-                    type="text"
-                    id="paymentAmountPage2"
-                    class="placeholder:font-semibold placeholder:text-slate-500 text-white text-2xl rounded-full bg-[#181818] outline-none p-2 w-2/3"
-                    readonly
-                  />
-                </div>
-              </div>
-
-              <div
-                class="input-group flex items-center justify-center flex-col"
-              >
-                <label
-                  for="solAmountPage2"
-                  class="text-center text-3xl font-semibold font-serif text-2xl mb-2"
-                  >Estimated Solana (SOL)</label
-                >
-                <input
-                  type="text"
-                  id="solAmountPage2"
-                  class="placeholder:font-semibold placeholder:text-slate-500 mb-2 text-white text-2xl rounded-full bg-[#181818] outline-none p-2 w-2/3 text-center"
-                  readonly
-                />
-              </div>
-
-              <div
-                class="input-group flex items-center justify-center flex-col"
-              >
-                <label
-                  for="senderWallet"
-                  class="text-center text-3xl font-semibold mb-4 font-serif text-2xl mb-2"
-                  >Sender's Wallet Address</label
-                >
-                <div class="flex items-center mb-3">
-                  <input
-                    type="text"
-                    id="senderWallet"
-                    placeholder="Enter wallet address"
-                    class="placeholder:font-semibold rounded-l-lg placeholder:text-slate-500 bg-[#181818] outline-none p-3 w-2/3"
-                    style="width: 380px"
-                  />
-                  <button
-                    onclick="validateWalletAddress()"
-                    class="bg-[#96f76f] p-3 text-[#232223] rounded-r-lg font-serif"
-                  >
-                    Check
-                  </button>
-                </div>
-                <div
-                  id="validationResult"
-                  class="text-xl mb-4 font-serif"
-                ></div>
-              </div>
-
-              <div class="button">
-                <button
-                  onclick="goToPage3()"
-                  class="bg-[#96f76f] p-3 text-[#232223] rounded-full font-serif"
-                >
-                  Continue
-                </button>
-              </div>
-            </div>
-          </div>
+      <div class="input-group">
+        <label for="paymentAmount">INR Amount</label>
+        <div style="display: flex">
+          <span style="font-weight: bold">₹</span>
+          <input
+            type="text"
+            id="paymentAmountPage2"
+            readonly
+            style="flex: 1; text-align: left"
+          />
         </div>
+      </div>
+
+      <div class="input-group">
+        <label for="solAmountPage2">Estimated Solana (SOL)</label>
+        <input type="text" id="solAmountPage2" readonly />
+      </div>
+
+      <div class="input-group">
+        <label for="senderWallet">Sender's Wallet Address</label>
+        <div style="display: flex; align-items: center">
+          <input
+            type="text"
+            id="senderWallet"
+            placeholder="Enter wallet address"
+          />
+          <button onclick="validateWalletAddress()">Check</button>
+        </div>
+        <div id="validationResult"></div>
+      </div>
+
+      <div class="button">
+        <button onclick="goToPage3()">Continue</button>
       </div>
     </div>
 
     <!-- Page 3: Send SOL -->
-    <div
-      class="page-3 flex iems-center justify-center flex-col"
-      style="display: none"
-    >
-      <div class="flex iems-center justify-center text-slate-300">
-        <div
-          class="flex border h-[80vh] w-[80vh] border-black bg-[#232223] -mt-[44rem] justify-center items-center"
-        >
-          <div class="flex items-center justify-center flex-col">
-            <span class="text-6xl mb-10 font-bold">
-              <div class="timer-stopwatch"></div>
-              <div id="timer" class="timer">5:00</div>
-            </span>
+    <div class="container page-3" style="display: none">
+      <div class="timer-stopwatch"></div>
+      <div id="timer" class="timer">5:00</div>
+      <br />
+      <div class="highlighted-text">Send SOL to:</div>
 
-            <div
-              class="highlighted-text text-center text-3xl font-semibold mb-2 font-serif text-2xl"
-            >
-              Send SOL to:
-            </div>
-
-            <div class="input-group mb-4">
-              <input
-                type="text"
-                id="walletAddress"
-                value="E1GvucNq72EiVPZoytdukF7F7Cg8RYk678Cp8mYJHg8F"
-                readonly
-                class="placeholder:font-semibold rounded-l-lg placeholder:text-slate-500 bg-[#181818] outline-none p-3 w-2/3"
-                style="width: 380px"
-              />
-              <button
-                id="copyButton"
-                class="bg-[#96f76f] p-3 text-[#232223] rounded-r-lg font-serif"
-                onclick="copyWalletAddress()"
-              >
-                Copy
-              </button>
-            </div>
-
-            <div
-              class="highlighted-text highlighted-text text-center text-3xl font-semibold mb-2 font-serif text-2xl"
-            >
-              Send SOL Amount:
-            </div>
-            <div class="input-group mb-6">
-              <input
-                type="text"
-                id="solAmountDisplay"
-                class="placeholder:font-semibold rounded-l-lg placeholder:text-slate-500 text-slate-500 bg-[#181818] outline-none p-3 w-2/3"
-                style="width: 290px"
-                readonly
-              />
-              <button
-                id="copySolAmountButton"
-                class="bg-[#96f76f] p-3 text-[#232223] rounded-r-lg font-serif"
-                onclick="copySolAmount()"
-              >
-                Copy
-              </button>
-            </div>
-
-            <div class="qr-code">
-              <img src="images/qr.png" alt="QR" />
-            </div>
-            <br />
-            <div id="confirmationMessage" class="highlighted-text"></div>
-          </div>
-        </div>
+      <div class="input-group">
+        <input
+          type="text"
+          id="walletAddress"
+          value="E1GvucNq72EiVPZoytdukF7F7Cg8RYk678Cp8mYJHg8F"
+          readonly
+        />
+        <button id="copyButton" onclick="copyWalletAddress()">Copy</button>
       </div>
+
+      <div class="highlighted-text">Send SOL Amount:</div>
+      <div class="input-group">
+        <input type="text" id="solAmountDisplay" readonly />
+        <button id="copySolAmountButton" onclick="copySolAmount()">Copy</button>
+      </div>
+
+      <div class="qr-code">
+        <img src="images/qr.png" alt="QR" />
+      </div>
+      <br />
+      <div id="confirmationMessage" class="highlighted-text"></div>
     </div>
 
     <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
+
     <script
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
     ></script>
     <script type="text/javascript">
       (function () {
-        emailjs.init("MiYSgZi6HUcMhkLZM"); // public key
+        emailjs.init("2UvrT_wUZQyXoq-QD"); // public key
       })();
     </script>
+
+    <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
 
     <script>
       const endpoint = "https://api.devnet.solana.com";
@@ -494,7 +640,7 @@
         );
 
         for (let signature of signatureList) {
-          // Added delay to avoid rate-limiting
+          // Adding  delay to avoid rate-limiting
           await sleep(1);
 
           try {
@@ -554,7 +700,7 @@
       function startPeriodCheck(
         senderAddress,
         expectedAmount,
-        interval = 3000 // checks every 3 seconds
+        interval = 10000
       ) {
         return new Promise((resolve) => {
           const checkTransactions = async () => {
@@ -714,9 +860,9 @@
         console.log("Using voucher code:", voucherCode);
 
         emailjs
-          .send("service_o1gdu2l", "template_74b26u7", {
-            voucher_code: voucherCode,
+          .send("service_nhhx9p7", "template_w9dwgrf", {
             to_email: userEmail,
+            voucher_code: voucherCode,
           })
           .then(
             function (response) {

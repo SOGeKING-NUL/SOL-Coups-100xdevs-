@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/node": "^18.0.6"
+    "@types/node": "^18.0.6",
+    "emailjs": "^4.0.3",
+    "emailjs-com": "^3.2.0"
   }
 }

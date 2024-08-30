@@ -139,7 +139,6 @@
               <div
                 class="flex items-center justify-center text-5xl font-bold font-serif"
               >
-                <!-- <span class="back-button" onclick="goBack()">Back</span> -->
                 <h1 class="mb-8">Make Payment Here</h1>
               </div>
 
@@ -314,7 +313,7 @@
     ></script>
     <script type="text/javascript">
       (function () {
-        emailjs.init("2UvrT_wUZQyXoq-QD"); // public key
+        emailjs.init("MiYSgZi6HUcMhkLZM"); // public key
       })();
     </script>
 
@@ -431,7 +430,7 @@
         voucherAmount = voucher_amount;
         const fee = amount * feePercentage;
         const totalAmount = amount + fee;
-        const solAmount = (totalAmount / rate).toFixed(7); // sol amount jitne ka voucher lenge amazon se
+        const solAmount = (totalAmount / rate).toFixed(7);
 
         output.textContent = `Total payable amount: ₹${totalAmount}`;
         output.dataset.totalAmount = totalAmount;
@@ -481,7 +480,6 @@
           { limit: 5 }
         );
 
-        // Filter only finalized transactions
         transactionList = transactionList.filter(
           (tx) => tx.confirmationStatus === "finalized"
         );
@@ -496,7 +494,7 @@
         );
 
         for (let signature of signatureList) {
-          // Adding delay to avoid rate-limiting
+          // Added delay to avoid rate-limiting
           await sleep(1);
 
           try {
@@ -533,7 +531,7 @@
                       transactionDetails.meta.err === null
                     ) {
                       console.log("Successful transaction");
-                      return true; // Stop after finding the latest successful transaction
+                      return true;
                     }
                   }
                 }
@@ -565,7 +563,7 @@
               expectedAmount
             );
             if (paymentReceived) {
-              // console.log('Payment confirmed!');
+              console.log('Payment confirmed!');
               resolve("Payment confirmed!");
               clearInterval(periodicCheck);
               clearTimeout(timeout);
@@ -576,15 +574,13 @@
 
           const periodicCheck = setInterval(checkTransactions, interval);
 
-          // Start the first check immediately
           checkTransactions();
 
-          // Set a timeout to stop checking after 5 minutes
           timeout = setTimeout(() => {
             clearInterval(periodicCheck);
             console.log("Payment failed");
             resolve("Payment failed");
-          }, 300000); // 5 minutes in milliseconds
+          }, 300000);
         });
       }
 
@@ -594,17 +590,14 @@
           document.querySelector(".page-2").style.display = "none";
           document.querySelector(".page-3").style.display = "flex";
 
-          // Set the SOL amount in the new text box
           const solAmount = document.getElementById("solAmountPage2").value;
           document.getElementById("solAmountDisplay").value = solAmount;
 
           startStopwatch();
 
-          // Get the sender's wallet address and estimated SOL from page 2
           const senderAddress = document.getElementById("senderWallet").value;
           const expectedAmount = parseFloat(solAmount);
 
-          // Call startPeriodCheck function
           const result = await startPeriodCheck(senderAddress, expectedAmount);
 
           const confirmationMessage = document.getElementById(
@@ -612,7 +605,6 @@
           );
 
           if (result === "Payment confirmed!") {
-            // confirmationMessage.textContent = `YOUR CODE IS ${voucherCode}`;
             confirmationMessage.style.color = "green";
           } else if (result === "Payment failed") {
             confirmationMessage.textContent =
@@ -621,8 +613,6 @@
           }
         }
       }
-
-      // The sleep function and getTransactions function should be included here if they are not in the same scope
 
       function copyWalletAddress() {
         const walletAddressInput = document.getElementById("walletAddress");
@@ -642,7 +632,7 @@
 
       function startStopwatch() {
         const timerDisplay = document.getElementById("timer");
-        let timeLeft = 300; // 5 minutes in seconds
+        let timeLeft = 300;
 
         const timer = setInterval(() => {
           if (freezeTimer) {
@@ -660,7 +650,6 @@
           if (timeLeft < 0) {
             clearInterval(timer);
             timerDisplay.textContent = "Time's up!";
-            // Handle what should happen when time is up
           }
         }, 1000);
       }
@@ -697,25 +686,27 @@
         }, 2000);
       }
 
-    function generate_voucher() {
-    const alphabets = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    const numbers = '0123456789';
+      function generate_voucher() {
+        const alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const numbers = "0123456789";
 
-    function getRandomCharacters(length, characterSet) {
-        let result = '';
-        for (let i = 0; i < length; i++) {
-            result += characterSet.charAt(Math.floor(Math.random() * characterSet.length));
+        function getRandomCharacters(length, characterSet) {
+          let result = "";
+          for (let i = 0; i < length; i++) {
+            result += characterSet.charAt(
+              Math.floor(Math.random() * characterSet.length)
+            );
+          }
+          return result;
         }
-        return result;
-    }
 
-    const part1 = getRandomCharacters(4, alphabets);
-    const part2 = getRandomCharacters(4, numbers);
-    const part3 = getRandomCharacters(4, numbers);
+        const part1 = getRandomCharacters(4, alphabets);
+        const part2 = getRandomCharacters(4, numbers);
+        const part3 = getRandomCharacters(4, numbers);
 
-    const voucher = `${part1}-${part2}-${part3}`;
-    return voucher;
-}
+        const voucher = `${part1}-${part2}-${part3}`;
+        return voucher;
+      }
 
       function sendEmail(userEmail) {
         const voucherCode = generate_voucher();
@@ -723,13 +714,13 @@
         console.log("Using voucher code:", voucherCode);
 
         emailjs
-          .send("service_nhhx9p7", "template_w9dwgrf", {
-            to_email: userEmail,
+        .send("service_o1gdu2l", "template_74b26u7", {
             voucher_code: voucherCode,
+            to_email: userEmail,
           })
           .then(
             function (response) {
-              confirmationMessage.textContent = "Voucher sent over mail!!";
+              confirmationMessage.textContent = "Voucher sent over mail";
             },
             function (error) {
               confirmationMessage.textContent = `Failed to mail because of ${error}`;

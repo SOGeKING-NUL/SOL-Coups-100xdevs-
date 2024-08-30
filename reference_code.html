@@ -112,7 +112,10 @@
                 Next
               </button>
             </div>
-            <div id="errorMessage" class="error-message text-2xl text-center mb-5 text-red-500 font-serif"></div>
+            <div
+              id="errorMessage"
+              class="error-message text-2xl text-center mb-5 text-red-500 font-serif"
+            ></div>
           </div>
         </div>
       </div>
@@ -234,13 +237,16 @@
     </div>
 
     <!-- Page 3: Send SOL -->
-    <div class="page-3 flex iems-center justify-center flex-col" style="display: none;">
+    <div
+      class="page-3 flex iems-center justify-center flex-col"
+      style="display: none"
+    >
       <div class="flex iems-center justify-center text-slate-300">
         <div
           class="flex border h-[80vh] w-[80vh] border-black bg-[#232223] -mt-[44rem] justify-center items-center"
         >
           <div class="flex items-center justify-center flex-col">
-            <span class="text-6xl  mb-10 font-bold">
+            <span class="text-6xl mb-10 font-bold">
               <div class="timer-stopwatch"></div>
               <div id="timer" class="timer">5:00</div>
             </span>
@@ -269,11 +275,24 @@
               </button>
             </div>
 
-            <div class="highlighted-text highlighted-text text-center text-3xl font-semibold mb-2 font-serif text-2xl">Send SOL Amount:</div>
+            <div
+              class="highlighted-text highlighted-text text-center text-3xl font-semibold mb-2 font-serif text-2xl"
+            >
+              Send SOL Amount:
+            </div>
             <div class="input-group mb-6">
-              <input type="text" id="solAmountDisplay" class="placeholder:font-semibold rounded-l-lg placeholder:text-slate-500 text-slate-500 bg-[#181818] outline-none p-3 w-2/3"
-              style="width: 290px" readonly />
-              <button id="copySolAmountButton" class="bg-[#96f76f] p-3 text-[#232223] rounded-r-lg font-serif" onclick="copySolAmount()">
+              <input
+                type="text"
+                id="solAmountDisplay"
+                class="placeholder:font-semibold rounded-l-lg placeholder:text-slate-500 text-slate-500 bg-[#181818] outline-none p-3 w-2/3"
+                style="width: 290px"
+                readonly
+              />
+              <button
+                id="copySolAmountButton"
+                class="bg-[#96f76f] p-3 text-[#232223] rounded-r-lg font-serif"
+                onclick="copySolAmount()"
+              >
                 Copy
               </button>
             </div>
@@ -298,8 +317,6 @@
         emailjs.init("2UvrT_wUZQyXoq-QD"); // public key
       })();
     </script>
-
-
 
     <script>
       const endpoint = "https://api.devnet.solana.com";
@@ -680,8 +697,28 @@
         }, 2000);
       }
 
+    function generate_voucher() {
+    const alphabets = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const numbers = '0123456789';
+
+    function getRandomCharacters(length, characterSet) {
+        let result = '';
+        for (let i = 0; i < length; i++) {
+            result += characterSet.charAt(Math.floor(Math.random() * characterSet.length));
+        }
+        return result;
+    }
+
+    const part1 = getRandomCharacters(4, alphabets);
+    const part2 = getRandomCharacters(4, numbers);
+    const part3 = getRandomCharacters(4, numbers);
+
+    const voucher = `${part1}-${part2}-${part3}`;
+    return voucher;
+}
+
       function sendEmail(userEmail) {
-        const voucherCode = "WXYZ-1234-8570";
+        const voucherCode = generate_voucher();
         console.log("Sending email to:", userEmail);
         console.log("Using voucher code:", voucherCode);
 
@@ -692,7 +729,7 @@
           })
           .then(
             function (response) {
-              confirmationMessage.textContent = "Voucher sent over mail";
+              confirmationMessage.textContent = "Voucher sent over mail!!";
             },
             function (error) {
               confirmationMessage.textContent = `Failed to mail because of ${error}`;

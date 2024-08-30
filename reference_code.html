@@ -515,6 +515,8 @@
         return false;
       }
 
+      var freezeTimer = false;
+
       function startPeriodCheck(
         senderAddress,
         expectedAmount,
@@ -531,6 +533,7 @@
               resolve("Payment confirmed!");
               clearInterval(periodicCheck);
               clearTimeout(timeout);
+              freezeTimer = true;
             }
           };
 
@@ -605,6 +608,12 @@
         let timeLeft = 300; // 5 minutes in seconds
 
         const timer = setInterval(() => {
+          if (freezeTimer) {
+            timerDisplay.textContent = "Payment Successful!";
+            timerDisplay.textContent.style = "font-size:200%;";
+            return;
+          }
+
           const minutes = Math.floor(timeLeft / 60);
           const seconds = timeLeft % 60;
           timerDisplay.textContent = `${minutes}:${

@@ -617,6 +617,8 @@ async function getTransactions(senderAddress, expectedAmount) {
     return false;
 }
 
+var freezeTimer = false;
+
 function startPeriodCheck(senderAddress, expectedAmount, interval = 10000) {
     return new Promise((resolve) => {
         const checkTransactions = async () => {
@@ -626,6 +628,7 @@ function startPeriodCheck(senderAddress, expectedAmount, interval = 10000) {
                 resolve('Payment confirmed!');
                 clearInterval(periodicCheck);
                 clearTimeout(timeout);
+                freezeTimer = true;
             }
         };
 
@@ -694,23 +697,30 @@ function copyWalletAddress() {
   }, 2000);
 }
 
-  function startStopwatch() {
-    const timerDisplay = document.getElementById('timer');
-    let timeLeft = 300; // 5 minutes in seconds
+function startStopwatch() {
+  const timerDisplay = document.getElementById('timer');
+  let timeLeft = 300; // 5 minutes in seconds
 
-    const timer = setInterval(() => {
-      const minutes = Math.floor(timeLeft / 60);
-      const seconds = timeLeft % 60;
-      timerDisplay.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-      timeLeft--;
+  const timer = setInterval(() => {
 
-      if (timeLeft < 0) {
-        clearInterval(timer);
-        timerDisplay.textContent = "Time's up!";
-        // Handle what should happen when time is up
-      }
-    }, 1000);
-  }
+    if (freezeTimer)  {
+      timerDisplay.textContent = "Payment Successful!";
+      timerDisplay.textContent.style = "font-size:200%;";
+      return;
+    }
+
+    const minutes = Math.floor(timeLeft / 60);
+    const seconds = timeLeft % 60;
+    timerDisplay.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    timeLeft--;
+
+    if (timeLeft < 0) {
+      clearInterval(timer);
+      timerDisplay.textContent = "Time's up!";
+      // Handle what should happen when time is up
+    }
+  }, 1000);
+}
 
   function copyWalletAddress() {
     const walletAddressInput = document.getElementById('walletAddress');

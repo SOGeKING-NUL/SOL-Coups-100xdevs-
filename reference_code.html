@@ -13,15 +13,15 @@
         justify-content: center;
         align-items: center;
         height: 100vh;
-        background-color: #2d2d2d; /* Light gray background */
+        background-color: #2d2d2d;
       }
 
       .container {
-        background-color: #ffffff; /* White background for the container */
+        background-color: #ffffff;
         border-radius: 10px;
         padding: 20px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        width: 400px; /* Fixed width to match your original dimensions */
+        width: 400px;
         display: flex;
         flex-direction: column;
       }
@@ -105,7 +105,7 @@
       }
 
       .inital-email-holder {
-        display: none; /* This is hidden by default */
+        display: none;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
@@ -154,7 +154,7 @@
       .error-message {
         color: red;
         text-align: center;
-        margin-top: 10px; /* Hidden by default */
+        margin-top: 10px;
       }
 
       .page-1,
@@ -191,7 +191,7 @@
       .errorEmail {
         color: red;
         text-align: center;
-        margin-top: 3px; /* Hidden by default */
+        margin-top: 3px;
       }
 
       #paymentAmountPage2 {
@@ -267,9 +267,8 @@
         margin-top: 20px;
       }
 
-      /* New Styles */
       #walletAddress {
-        width: calc(100% - 120px); /* Adjusted for the width of the button */
+        width: calc(100% - 120px);
         padding: 10px;
         border: 1px solid #ddd;
         border-radius: 5px;
@@ -277,9 +276,6 @@
         margin-right: 5px;
       }
 
-      /* .page-3 .input-group {
-      width: 100%;
-    } */
       .page-3 .input-group {
         display: flex;
         align-items: center;
@@ -427,7 +423,7 @@
     <div class="container page-3" style="display: none">
       <div class="timer-stopwatch"></div>
       <div id="timer" class="timer">5:00</div>
-
+      <br />
       <div class="highlighted-text">Send SOL to:</div>
 
       <div class="input-group">
@@ -449,11 +445,24 @@
       <div class="qr-code">
         <img src="images/qr.png" alt="QR" />
       </div>
-
+      <br />
       <div id="confirmationMessage" class="highlighted-text"></div>
     </div>
 
     <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
+
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
+    <script type="text/javascript">
+      (function () {
+        emailjs.init("MiYSgZi6HUcMhkLZM"); // public key
+      })();
+    </script>
+
+    <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
+
     <script>
       const endpoint = "https://api.devnet.solana.com";
       const solanaConnection = new solanaWeb3.Connection(endpoint);
@@ -491,8 +500,11 @@
         document.querySelector(".page-1").style.display = "flex";
       }
 
+      var email = "";
+
       function saveEmail() {
-        const email = document.getElementById("email").value;
+        const Email = document.getElementById("email").value;
+        email = Email;
         const errorEmail = document.getElementById("errorEmail");
 
         errorEmail.textContent = "";
@@ -531,6 +543,8 @@
         }
       }
 
+      var voucherAmount = 0;
+
       async function checkPrize() {
         const amount = parseFloat(
           document.getElementById("voucherAmount").value
@@ -558,6 +572,8 @@
           feePercentage = 0.03; // 3% fee
         }
 
+        const voucher_amount = (amount / rate).toFixed(7);
+        voucherAmount = voucher_amount;
         const fee = amount * feePercentage;
         const totalAmount = amount + fee;
         const solAmount = (totalAmount / rate).toFixed(7);
@@ -610,7 +626,6 @@
           { limit: 5 }
         );
 
-        // Filter only finalized transactions
         transactionList = transactionList.filter(
           (tx) => tx.confirmationStatus === "finalized"
         );
@@ -625,7 +640,7 @@
         );
 
         for (let signature of signatureList) {
-          // Adding delay to avoid rate-limiting
+          // Adding  delay to avoid rate-limiting
           await sleep(1);
 
           try {
@@ -662,7 +677,7 @@
                       transactionDetails.meta.err === null
                     ) {
                       console.log("Successful transaction");
-                      return true; // Stop after finding the latest successful transaction
+                      return true;
                     }
                   }
                 }
@@ -685,7 +700,7 @@
       function startPeriodCheck(
         senderAddress,
         expectedAmount,
-        interval = 10000
+        interval = 3000 // checks after every 3 seconds
       ) {
         return new Promise((resolve) => {
           const checkTransactions = async () => {
@@ -699,20 +714,19 @@
               clearInterval(periodicCheck);
               clearTimeout(timeout);
               freezeTimer = true;
+              sendEmail(email);
             }
           };
 
           const periodicCheck = setInterval(checkTransactions, interval);
 
-          // Start the first check immediately
           checkTransactions();
 
-          // Set a timeout to stop checking after 5 minutes
           timeout = setTimeout(() => {
             clearInterval(periodicCheck);
             console.log("Payment failed");
             resolve("Payment failed");
-          }, 300000); // 5 minutes in milliseconds
+          }, 300000);
         });
       }
 
@@ -722,17 +736,14 @@
           document.querySelector(".page-2").style.display = "none";
           document.querySelector(".page-3").style.display = "flex";
 
-          // Set the SOL amount in the new text box
           const solAmount = document.getElementById("solAmountPage2").value;
           document.getElementById("solAmountDisplay").value = solAmount;
 
           startStopwatch();
 
-          // Get the sender's wallet address and estimated SOL from page 2
           const senderAddress = document.getElementById("senderWallet").value;
           const expectedAmount = parseFloat(solAmount);
 
-          // Call startPeriodCheck function
           const result = await startPeriodCheck(senderAddress, expectedAmount);
 
           const confirmationMessage = document.getElementById(
@@ -740,7 +751,6 @@
           );
 
           if (result === "Payment confirmed!") {
-            confirmationMessage.textContent = "YOUR CODE IS WXYZ-1234-8560";
             confirmationMessage.style.color = "green";
           } else if (result === "Payment failed") {
             confirmationMessage.textContent =
@@ -749,8 +759,6 @@
           }
         }
       }
-
-      // The sleep function and getTransactions function should be included here if they are not in the same scope
 
       function copyWalletAddress() {
         const walletAddressInput = document.getElementById("walletAddress");
@@ -770,12 +778,11 @@
 
       function startStopwatch() {
         const timerDisplay = document.getElementById("timer");
-        let timeLeft = 300; // 5 minutes in seconds
+        let timeLeft = 300;
 
         const timer = setInterval(() => {
           if (freezeTimer) {
             timerDisplay.textContent = "Payment Successful!";
-            timerDisplay.textContent.style = "font-size:200%;";
             return;
           }
 
@@ -789,7 +796,6 @@
           if (timeLeft < 0) {
             clearInterval(timer);
             timerDisplay.textContent = "Time's up!";
-            // Handle what should happen when time is up
           }
         }, 1000);
       }
@@ -824,6 +830,48 @@
           copyButton.textContent = "Copy";
           copyButton.classList.remove("copied");
         }, 2000);
+      }
+
+      function generate_voucher() {
+        const alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const numbers = "0123456789";
+
+        function getRandomCharacters(length, characterSet) {
+          let result = "";
+          for (let i = 0; i < length; i++) {
+            result += characterSet.charAt(
+              Math.floor(Math.random() * characterSet.length)
+            );
+          }
+          return result;
+        }
+
+        const part1 = getRandomCharacters(4, alphabets);
+        const part2 = getRandomCharacters(4, numbers);
+        const part3 = getRandomCharacters(4, numbers);
+
+        const voucher = `${part1}-${part2}-${part3}`;
+        return voucher;
+      }
+
+      function sendEmail(userEmail) {
+        const voucherCode = generate_voucher();
+        console.log("Sending email to:", userEmail);
+        console.log("Using voucher code:", voucherCode);
+
+        emailjs
+        .send("service_o1gdu2l", "template_74b26u7", {
+            voucher_code: voucherCode,
+            to_email: userEmail,
+          })
+          .then(
+            function (response) {
+              confirmationMessage.textContent = "Voucher sent over mail";
+            },
+            function (error) {
+              confirmationMessage.textContent = `Failed to mail because of ${error}`;
+            }
+          );
       }
     </script>
   </body>

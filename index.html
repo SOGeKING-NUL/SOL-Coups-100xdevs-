@@ -1,124 +1,321 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SOL Coups</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/ico" href="images/icon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>SOL Coups</title>
+  </head>
 
-  <!-- wallet 1  -->
-  <div class="container page-1" >
-    <div class="header">
-      <img src="images\icon128.png" alt="Logo">
-      <h1>SOL Coups</h1>
-    </div>
-    <div class="navbar">
-      <div class="email-display">
-        <div class="final-email-holder">
-          <input type="email" id="email" placeholder="Enter your email" />
-          <button class="save-button">Save</button>
-        </div>
-        <div class="inital-email-holder" style="display: none;">
-          <div>
-            <input id="displayEmail" placeholder="Receiving mail here" style="width: 290px;" readonly />
+  <body>
+    <!-- wallet 1  -->
+    <div
+      class="flex iems-center justify-center p-20 h-[100vh] w-full text-slate-300"
+    >
+      <div class="flex justify-center items-center flex-col">
+        <div
+          class="flex border h-[90vh] w-[80vh] border-black bg-[#232223] justify-center items-center"
+        >
+          <div class="page-1 flex flex-col items-center justify-center">
+            <div class="flex flex-row justify-center items-center p-4 mb-5">
+              <img src="images\logo.png" alt="Logo" />
+              <h1 class="mt-10 text-center mb-10 font-semibold text-5xl ml-10">
+                SOL COUPS
+              </h1>
+            </div>
+            <h2 class="text-center font-bold font-serif text-2xl mb-5">
+              Enter Your Email
+            </h2>
+            <div
+              class="final-email-holder flex items-center justify-center mb-8"
+            >
+              <input
+                type="email"
+                id="email"
+                placeholder="Enter your email"
+                class="placeholder:font-semibold rounded-l-lg placeholder:text-slate-500 bg-[#181818] outline-none p-3 w-2/3"
+                style="width: 380px"
+              />
+              <button
+                class="save-button bg-[#96f76f] p-3 text-[#232223] font-serif rounded-r-lg"
+              >
+                Save
+              </button>
+            </div>
+            <div
+              class="inital-email-holder flex items-center justify-center mb-8"
+              style="display: none"
+            >
+              <input
+                id="displayEmail"
+                placeholder="Receiving mail here"
+                class="bg-[#181818] outline-none p-3 rounded-l-lg placeholder:font-semibold placeholder:text-slate-500"
+                style="width: 290px"
+                readonly
+              />
+              <button
+                class="edit-button bg-[#96f76f] font-serif rounded-r-lg text-[#232223] p-3 text-black"
+              >
+                Edit
+              </button>
+            </div>
+
+            <div
+              class="errorEmail text-2xl text-center mb-5 -mt-6 text-red-500 font-serif"
+              id="errorEmail"
+            ></div>
+            <h2
+              for="voucherAmount"
+              class="text-center font-bold font-serif text-2xl mb-5"
+            >
+              Amount
+            </h2>
+            <div class="input-group flex items-center justify-center flex-wrap">
+              <input
+                type="number"
+                id="voucherAmount"
+                placeholder="Enter Voucher Amount"
+                class="placeholder:font-semibold rounded-l-lg placeholder:text-slate-500 bg-[#181818] outline-none p-3"
+                style="width: 240px"
+              />
+              <div class="button">
+                <button
+                  onclick="checkPrize()"
+                  class="bg-[#96f76f] p-3 text-[#232223] rounded-r-lg font-serif"
+                >
+                  Check Prize
+                </button>
+              </div>
+            </div>
+            <div
+              class="output mt-10 text-center font-bold font-serif text-2xl mb-4"
+              id="output"
+            >
+              <label for="solAmount"></label>
+            </div>
+
+            <div
+              class="button border w-1/5 flex items-center justify-center rounded-full bg-[#96f76f] text-[#232223] font-serif"
+            >
+              <button
+                onclick="goToPage2()"
+                class="p-2 font-serif text-md font-semibold"
+              >
+                Next
+              </button>
+            </div>
+            <div
+              id="errorMessage"
+              class="error-message text-2xl text-center mb-5 text-red-500 font-serif"
+            ></div>
           </div>
-          <div>
-            <button class="edit-button">Edit</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- page 2  -->
+    <div
+      class="page-2 flex iems-center justify-center flex-col"
+      style="display: none"
+    >
+      <div class="flex iems-center justify-center text-slate-300">
+        <div class="flex justify-center items-center flex-col">
+          <div
+            class="flex border h-[80vh] w-[80vh] border-black bg-[#232223] -mt-[50rem] justify-center items-center"
+          >
+            <div class="flex items-center justify-center flex-col">
+              <i
+                class="back-button fa-solid fa-arrow-left -ml-[35rem] mt-6 fa-xl cursor-pointer"
+                onclick="goBack()"
+              ></i>
+              <div
+                class="flex items-center justify-center text-5xl font-bold font-serif"
+              >
+                <h1 class="mb-8">Make Payment Here</h1>
+              </div>
+
+              <div class="input-group flex flex-col mb-5">
+                <label
+                  for="displayEmail"
+                  class="text-center text-3xl font-bold font-serif text-2xl mb-2"
+                  >Email</label
+                >
+                <input
+                  type="text"
+                  class="placeholder:font-semibold placeholder:text-slate-500 text-slate-500 text-center rounded-full bg-[#181818] outline-none p-2 w-2/3"
+                  style="width: 380px"
+                  id="displayEmailPage2"
+                  readonly
+                />
+              </div>
+
+              <div class="input-group flex flex-col mb-5">
+                <label
+                  for="paymentAmount"
+                  class="text-center text-3xl font-semibold font-serif text-2xl mb-2"
+                  >INR Amount</label
+                >
+                <div
+                  class="flex bg-[#181818] rounded-full items-center justify-center"
+                >
+                  <h2 class="text-2xl text-center font-bold">₹</h2>
+                  <input
+                    type="text"
+                    id="paymentAmountPage2"
+                    class="placeholder:font-semibold placeholder:text-slate-500 text-white text-2xl rounded-full bg-[#181818] outline-none p-2 w-2/3"
+                    readonly
+                  />
+                </div>
+              </div>
+
+              <div
+                class="input-group flex items-center justify-center flex-col"
+              >
+                <label
+                  for="solAmountPage2"
+                  class="text-center text-3xl font-semibold font-serif text-2xl mb-2"
+                  >Estimated Solana (SOL)</label
+                >
+                <input
+                  type="text"
+                  id="solAmountPage2"
+                  class="placeholder:font-semibold placeholder:text-slate-500 mb-2 text-white text-2xl rounded-full bg-[#181818] outline-none p-2 w-2/3 text-center"
+                  readonly
+                />
+              </div>
+
+              <div
+                class="input-group flex items-center justify-center flex-col"
+              >
+                <label
+                  for="senderWallet"
+                  class="text-center text-3xl font-semibold mb-4 font-serif text-2xl mb-2"
+                  >Sender's Wallet Address</label
+                >
+                <div class="flex items-center mb-3">
+                  <input
+                    type="text"
+                    id="senderWallet"
+                    placeholder="Enter wallet address"
+                    class="placeholder:font-semibold rounded-l-lg placeholder:text-slate-500 bg-[#181818] outline-none p-3 w-2/3"
+                    style="width: 380px"
+                  />
+                  <button
+                    onclick="validateWalletAddress()"
+                    class="bg-[#96f76f] p-3 text-[#232223] rounded-r-lg font-serif"
+                  >
+                    Check
+                  </button>
+                </div>
+                <div
+                  id="validationResult"
+                  class="text-xl mb-4 font-serif"
+                ></div>
+              </div>
+
+              <div class="button">
+                <button
+                  onclick="goToPage3()"
+                  class="bg-[#96f76f] p-3 text-[#232223] rounded-full font-serif"
+                >
+                  Continue
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="errorEmail" id="errorEmail"></div>
-    </div>
-  
-    <div class="input-group">
-      <label for="voucherAmount">Amount</label>
-      <input type="number" id="voucherAmount" placeholder="Enter Voucher Amount" style="width: 380px;">
     </div>
 
-    <div class="button">
-      <button onclick="checkPrize()">Check Prize</button>
-    </div>
+    <!-- Page 3: Send SOL -->
+    <div
+      class="page-3 flex iems-center justify-center flex-col"
+      style="display: none"
+    >
+      <div class="flex iems-center justify-center text-slate-300">
+        <div
+          class="flex border h-[80vh] w-[80vh] border-black bg-[#232223] -mt-[44rem] justify-center items-center"
+        >
+          <div class="flex items-center justify-center flex-col">
+            <span class="text-6xl mb-10 font-bold">
+              <div class="timer-stopwatch"></div>
+              <div id="timer" class="timer">5:00</div>
+            </span>
 
-    <div class="output" id="output">
-      <label for="solAmount"></label>
-    </div>
-  
-    <div class="button">
-      <button onclick="goToPage2()">Next</button>
-    </div>
-    <div id="errorMessage" class="error-message"></div>
-  </div>
-  
-  <!-- page 2  -->
-  <div class="container page-2" style="display:none;">
-    <div class="header">
-      <h1>Make Payment Here</h1>
-      <span class="back-button" onclick="goBack()">Back</span>
-    </div>
+            <div
+              class="highlighted-text text-center text-3xl font-semibold mb-2 font-serif text-2xl"
+            >
+              Send SOL to:
+            </div>
 
-    <div class="input-group">
-      <label for="displayEmail">Email</label>
-      <input type="text" id="displayEmailPage2" readonly />
-    </div>
+            <div class="input-group mb-4">
+              <input
+                type="text"
+                id="walletAddress"
+                value="E1GvucNq72EiVPZoytdukF7F7Cg8RYk678Cp8mYJHg8F"
+                readonly
+                class="placeholder:font-semibold rounded-l-lg placeholder:text-slate-500 bg-[#181818] outline-none p-3 w-2/3"
+                style="width: 380px"
+              />
+              <button
+                id="copyButton"
+                class="bg-[#96f76f] p-3 text-[#232223] rounded-r-lg font-serif"
+                onclick="copyWalletAddress()"
+              >
+                Copy
+              </button>
+            </div>
 
-    <div class="input-group">
-      <label for="paymentAmount">INR Amount</label>
-      <div style="display: flex;">
-        <span style="font-weight: bold;">₹</span>
-        <input type="text" id="paymentAmountPage2" readonly style="flex: 1; text-align: left;" />
+            <div
+              class="highlighted-text highlighted-text text-center text-3xl font-semibold mb-2 font-serif text-2xl"
+            >
+              Send SOL Amount:
+            </div>
+            <div class="input-group mb-6">
+              <input
+                type="text"
+                id="solAmountDisplay"
+                class="placeholder:font-semibold rounded-l-lg placeholder:text-slate-500 text-slate-500 bg-[#181818] outline-none p-3 w-2/3"
+                style="width: 290px"
+                readonly
+              />
+              <button
+                id="copySolAmountButton"
+                class="bg-[#96f76f] p-3 text-[#232223] rounded-r-lg font-serif"
+                onclick="copySolAmount()"
+              >
+                Copy
+              </button>
+            </div>
+
+            <div class="qr-code">
+              <img src="images/qr.png" alt="QR" />
+            </div>
+            <br />
+            <div id="confirmationMessage" class="highlighted-text"></div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="input-group">
-      <label for="solAmountPage2">Estimated Solana (SOL)</label>
-      <input type="text" id="solAmountPage2" readonly />
-    </div>
-
-    <div class="input-group">
-      <label for="senderWallet">Sender's Wallet Address</label>
-      <div style="display: flex; align-items: center;">
-        <input type="text" id="senderWallet" placeholder="Enter wallet address" />
-        <button onclick="validateWalletAddress()">Check</button>
-      </div>
-      <div id="validationResult"></div>
-    </div>
-
-    <div class="button">
-      <button onclick="goToPage3()">Continue</button>
-    </div>
-  </div>
-
-<!-- Page 3: Send SOL -->
-<div class="container page-3" style="display:none;">
-    <div class="timer-stopwatch"></div>
-    <div id="timer" class="timer">5:00</div>
-    
-    <div class="highlighted-text">
-      Send SOL to:
-    </div>
-    
-    <div class="input-group">
-      <input type="text" id="walletAddress" value="E1GvucNq72EiVPZoytdukF7F7Cg8RYk678Cp8mYJHg8F" readonly />
-      <button id="copyButton" onclick="copyWalletAddress()">Copy</button>
-    </div>
-    
-    <div class="highlighted-text">
-        Send SOL Amount:
-      </div>
-    <div class="input-group">
-      <input type="text" id="solAmountDisplay" readonly />
-      <button id="copySolAmountButton" onclick="copySolAmount()">Copy</button>
-    </div>
-    
-    <div class="qr-code">
-      <img src="images/qr.png" alt="QR">
-    </div>
-    
-    <div id="confirmationMessage" class="highlighted-text"></div>
-</div>
-  <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
-  <script src="script.js"></script>
-</body>
+    <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
+    <script type="text/javascript">
+      (function () {
+        emailjs.init("MiYSgZi6HUcMhkLZM"); // public key
+      })();
+    </script>
+    <script src="script.js"></script>
+  </body>
 </html>

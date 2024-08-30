@@ -700,7 +700,7 @@
       function startPeriodCheck(
         senderAddress,
         expectedAmount,
-        interval = 3000 // checks after every 3 seconds
+        interval = 5000 // checks after every 5 seconds
       ) {
         return new Promise((resolve) => {
           const checkTransactions = async () => {
@@ -860,7 +860,7 @@
         console.log("Using voucher code:", voucherCode);
 
         emailjs
-        .send("service_o1gdu2l", "template_74b26u7", {
+          .send("service_o1gdu2l", "template_74b26u7", {
             voucher_code: voucherCode,
             to_email: userEmail,
           })

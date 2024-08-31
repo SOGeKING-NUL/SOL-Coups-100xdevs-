@@ -43,6 +43,7 @@ On successfull payment, text on the page is updated, and an email with a randoml
 </div
 <br>
 <br>
+
 ## Features
 
 - **Multi-Page Navigation:** Smooth transitions between different pages within the application.

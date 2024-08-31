@@ -13,7 +13,10 @@ To view the application correctly, **please make sure to open only the `index.ht
 3. Ensure that all other files in the project are in their original locations relative to `index.html`.
 
 Following these steps will ensure that the application functions as intended. If you encounter any issues, please make sure you are running `index.html` and not any other files directly. The page should look something like this:
-![Page2](images/page1.png) 
+<div style="text-align: center;">
+  <img src="images/page1" alt="Email Image" width="500" height= "500">
+</div>
+
 
 On providing your email address and amount you want on your gift voucher, sol coups will give you an approximate value of inr you will need to send via crypto to get the voucher you want. The application then takes you to the next page where payment details are finalized:
 ![Page2](images/page2.png)

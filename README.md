@@ -1,10 +1,10 @@
 # SOL COUPS
 
-SOL Coups is a user-friendly application designed to help users buy gift vouchers in exchange for their SOL coins. This project leverages the Solana blockchain to provide a quick and secure way for users to swap their cryptocurrency for gift cards. 
+SOL Coups is a user-friendly application designed to help users buy gift vouchers in exchange for their SOL coins. This project leverages the Solana blockchain to provide a quick and secure way for users to swap their cryptocurrency for gift cards.
 
 ## Getting Started
 
-To view the application correctly, **please make sure to open only the `index.html` file** in your browser. Opening other files directly may cause incomplete or incorrect rendering of the application.
+To view the application correctly, please make sure to **open only the `index.html` file** in your browser. Opening other files directly may cause incomplete or incorrect rendering of the application.
 
 ### Prerequisites
 
@@ -35,7 +35,7 @@ The page should look something like this-
 </dd></dl></dd></dl></dd></dl>
 <br>
 
-On providing your email address and amount you want on your gift voucher, sol coups will give you an approximate value of inr you will need to send via crypto to get the voucher you want. The application then takes you to the next page where payment details are finalized.
+By providing your email address and the desired amount for the gift voucher, SOL Coups will calculate the approximate INR value that you need to send via crypto to receive the voucher. The application then directs you to the next page to finalize the payment details.
 
 <dl><dd><dl><dd><dl><dd>
   <div>
@@ -44,7 +44,7 @@ On providing your email address and amount you want on your gift voucher, sol co
 </dd></dl></dd></dl></dd></dl>
 <br>
 
-Once a correct sender's wallet address is provided, user is taken to the payment gateway where awindow of 5 min opens for user to make payment.
+Once a valid sender's wallet address is provided, the user is directed to the payment gateway, where a 5-minute window is available to complete the payment.
 
 <dl><dd><dl><dd><dl><dd>
   <div>
@@ -53,7 +53,7 @@ Once a correct sender's wallet address is provided, user is taken to the payment
 </dd></dl></dd></dl></dd></dl>
 <br>
 
-On successfull payment, text on the page is updated, and an email with a randomly generated code is sent to the user's imputted email.
+Upon successful payment, the text on the page is updated, and an email containing a randomly generated code is sent to the user's provided email address.
 
 <dl><dd><dl><dd><dl><dd>
   <div>
@@ -72,10 +72,10 @@ Email that is recieved-
 
 ## Features
 
-- **Multi-Page Navigation:** Smooth transitions between different pages within the application.
-- **Email Validation:** Ensures that users input a valid email address before proceeding with transactions.
-- **Cryptocurrency Payment:** Handles payments using COL coins, converting them to gift vouchers.
-- **Wallet Address Validation:** Checks the validity of the user's Solana wallet address before processing transactions.
+- **Multi-Page Navigation:** Ensures smooth transitions between pages within the application.
+- **Email Validation:** Ensures that the user inputs a valid email address before proceeding with the transaction.
+- **Cryptocurrency Payment:** Processes payments with SOL coins by converting them into gift vouchers.
+- **Wallet Address Validation:** Verifies the validity of the user's Solana wallet address before processing the transaction.
 
 ## Refereces
 
@@ -88,11 +88,11 @@ Email that is recieved-
 
 ## Built With
 
-* [TailWind](https://cdn.tailwindcss.com/) - The css framework used
-* [Solana Devnet](https://api.devnet.solana.com/) - Used for development purpose
-* [Solana Web3.js](https://solana-labs.github.io/solana-web3.js/) - Used to interact with the Solana blockchain.
-* [CoinGeko](https://www.coingecko.com/) - Used for real-time crypto exchange rates
-* [EmailJS](https://www.emailjs.com/) - Used to automate emails
+* [TailWind](https://cdn.tailwindcss.com/)- The css framework used
+* [Solana Devnet](https://api.devnet.solana.com/)- Used for development purpose
+* [Solana Web3.js](https://solana-labs.github.io/solana-web3.js/)- Used to interact with the Solana blockchain.
+* [CoinGeko](https://www.coingecko.com/)- Used for real-time crypto exchange rates
+* [EmailJS](https://www.emailjs.com/)- Used to automate emails
 
 ## Contribution
 
@@ -100,7 +100,7 @@ Please read [CONTRIBUTING.md](https://gist.github.com/SOGeKING-NUL/SOL-Coups-100
 
 ## Authors
 
-* **SOGeKING** - [SOGeKING-NUL](https://github.com/SOGeKING-NUL/)
-* **Tashmeet** - [tashmeetsk](https://github.com/tashmeetsk/)
+* **Utsav**- [SOGeKING-NUL](https://github.com/SOGeKING-NUL/)
+* **Tashmeet**- [tashmeetsk](https://github.com/tashmeetsk/)
 
-See also the list of [contributors](https://github.com/SOGeKING-NUL/SOL-Coups-100xdevs-/contributors) who participated in this project.
+The list of [contributors](https://github.com/SOGeKING-NUL/SOL-Coups-100xdevs-/contributors) who participated in this project.

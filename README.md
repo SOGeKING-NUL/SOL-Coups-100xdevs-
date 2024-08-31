@@ -19,18 +19,26 @@ Following these steps will ensure that the application functions as intended. If
 
 
 On providing your email address and amount you want on your gift voucher, sol coups will give you an approximate value of inr you will need to send via crypto to get the voucher you want. The application then takes you to the next page where payment details are finalized:
-![Page2](images/page2.png)
+<div style="text-align: center;">
+  <img src="images/page2.png" alt="Page 2" width="500" height= "500">
+</div
 
+  
 Once a correct sender's wallet address is provided, user is taken to the payment gateway where awindow of 5 min opens for user to make payment:
-![Page3.1](images/page3.1.png)
+<div style="text-align: center;">
+  <img src="images/page3.1.png" alt="Page 3.1" width="500" height= "500">
+</div
 
+  
 on successfull payment, text on the page is updated, and an email with a randomly generated code is sent to the user's imputted email.
-![Page3.2](images/page3.2.png)
+<div style="text-align: center;">
+  <img src="images/page3.2.png" alt="Page 3.2" width="500" height= "500">
+</div
 
 
-
-![Email](images/email.png)
-
+<div style="text-align: center;">
+  <img src="images/email.png" alt="Email" width="500" height= "500">
+</div
 
 
 ## Features

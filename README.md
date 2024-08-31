@@ -12,6 +12,8 @@ To view the application correctly, **please make sure to open only the `index.ht
 2. Open `index.html` file in your browser.
 3. Ensure that all other files in the project are in their original locations relative to `index.html`.
 <br>
+<br>
+<br>
 Following these steps will ensure that the application functions as intended. If you encounter any issues, please make sure you are running `index.html` and not any other files directly. The page should look something like this:
 <div style="text-align: center;">
   <img src="images/page1.png" alt="Page 1" width="500" height= "500">

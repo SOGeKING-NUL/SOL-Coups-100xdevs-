@@ -1,4 +1,4 @@
-### Disclaimer, this application is designed to work exclusively on the Solana Devnet. Please refrain from using real Solana tokens (SOL) for transactions.
+### Disclaimer, this application is designed to work exclusively on the Solana Devnet. Please refrain from using real Solana coins (SOL) for transactions.
 
 # SOL COUPS
 

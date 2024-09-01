@@ -1,4 +1,5 @@
-### Disclaimer, this application is designed to work exclusively on the Solana Devnet. Please refrain from using real Solana coins (SOL) for transactions.
+### Disclaimer, this application is designed to work exclusively on the Solana Devnet. Please refrain from using real Solana coins (SOL) for transactions. Our initial plan was to make this into a web extension but dad tolimit it to only a webpage due to limited knowledge
+
 
 # SOL COUPS
 
@@ -80,7 +81,7 @@ Email that is recieved-
 - **Cryptocurrency Payment:** Handles payments using COL coins, converting them to gift vouchers.
 - **Wallet Address Validation:** Checks the validity of the user's Solana wallet address before processing transactions.
 
-## Refereces
+## References
 
 - YouTube-
   - [Video 1](https://youtube.com/playlist?list=PLVKLWop9wWA82pZoyylZD2VF2c7MR8_5I&si=AQqzgid9qSuKjcjZ)

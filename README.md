@@ -1,6 +1,5 @@
 ### Disclaimer, this application is designed to work exclusively on the Solana Devnet. Please refrain from using real Solana coins (SOL) for transactions. Our initial plan was to make this into a web extension but dad tolimit it to only a webpage due to limited knowledge
 
-
 # SOL COUPS
 
 SOL Coups is a user-friendly application designed to help users buy gift vouchers in exchange for their SOL coins. This project leverages the Solana blockchain to provide a quick and secure way for users to swap their cryptocurrency for gift cards.<br>
@@ -106,6 +105,9 @@ Please read [CONTRIBUTING.md](https://gist.github.com/SOGeKING-NUL/SOL-Coups-100
 
 * **SOGeKING** - [SOGeKING-NUL](https://github.com/SOGeKING-NUL/)
 * **Tashmeet** - [tashmeetsk](https://github.com/tashmeetsk/)
+
+idea board: https://colossal-lycra-fdf.notion.site/SOL-Coups-d34557aec9384fcca4c9e1fa83979278?pvs=4
+
 
 See also the list of [contributors](https://github.com/SOGeKING-NUL/SOL-Coups-100xdevs-/contributors) who participated in this project
 
